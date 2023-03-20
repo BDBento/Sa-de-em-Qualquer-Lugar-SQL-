@@ -3,29 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map at a specified location</title>
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-    <link rel="stylesheet" type="text/css" href="demo.css" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="stylesheet" type="text/css" href="../template.css" />
-    <script type="text/javascript" src='../test-credentials.js'></script>    
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
-  <script>window.ENV_VARIABLE = 'developer.here.com'</script><script src='../iframeheight.js'></script></head>
-  <body id="markers-on-the-map">
-    <div class="page-header">
-        <h1>Map at a specified location</h1>
-        <p>Display a map at a specified location and zoom level</p>
-    </div>
-    <p>This example displays a movable map initially centered on the <b>Brandenburg Gate</b> in the centre of Berlin <i>(52.5159°N, 13.3777°E)</i></p>
-    <div id="map"></div>
-    <h3>Code</h3>
-    <p>
-        The <code>map.setCenter()</code> method and <code>map.setZoom() </code>method are able to control the location of the map.<br>
-    </p>
-    <script type="text/javascript" src='demo.js'></script>
-  </body>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Document</title>
+    <!-- here -->
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core-legacy.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="js.js"></script>
+    <!-- here -->
+</head>
+<body>
+     <div style="width: 1080px; height: 1080px" id="mapContainer"></div>
+
+     <script>
+        // Initialize the platform object
+        var platform = new H.service.Platform({
+          'apikey': 'fpKW40RhQYwuL-8DgNQ-tRYgkhM0FvyKe7f_hfu6xtY'
+        });
+  
+        // Obtain the default map types from the platform object
+        var maptypes = platform.createDefaultLayers();
+  
+        // Instantiate (and display) the map
+        var map = new H.Map(
+          document.getElementById('mapContainer'),
+          maptypes.vector.normal.map,
+          {
+            zoom: 12,
+            center: { lat: -20.4435, lng: -54.6479 }
+          });
+      </script>
+</body>
 </html>
